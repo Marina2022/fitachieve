@@ -18,28 +18,32 @@ import SideBar from "@/components/userPage/SideBar"
 // можно отд. страницу со всеми достижениями, все дела. 
 
 export default async function Home({searchParams}: { searchParams: any }) {
-    const theme = searchParams.theme
+    const theme = searchParams?.theme
 
+    console.log('theme', theme)
     connectDB()
 
     let themeToWork
     const user = await User.findById('6634e7d79ec5d549ac393bd6')
 
     const allThemes = [...user.themes]
-    console.log('allThemes', allThemes[0])
 
     themeToWork = allThemes.find((item: any) => {
-        return item.themeName.toLowerCase() === theme
+        console.log('item.themeName.toLowerCase()', item.themeName.toLowerCase())
+        console.log('theme ======', theme)
+        
+        return item.themeName.toLowerCase() === theme.toLowerCase()
     })
 
     if (!themeToWork) themeToWork = allThemes[0]
+    console.log('themeToWork =====', themeToWork)
 
 
     return (
         <main className="pt-24 container mx-auto">
             <div className="flex w-full">
                 <SideBar/>
-                <Achievement/>
+                <Achievement themeToWork={themeToWork} />
 
                 <aside className="w-1/5 ml-auto space-y-5">
                     {

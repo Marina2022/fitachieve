@@ -5,7 +5,8 @@ import {useState} from "react";
 import {useRouter} from "next/navigation";
 
 
-const FiveMinSquare = ({emptyProp, setWorkedSquaresLocal, workedSquares}: {emptyProp: boolean, setWorkedSquaresLocal: (val: any)=>void, workedSquares: number}) => {
+const FiveMinSquare = ({emptyProp, setWorkedSquaresLocal, workedSquares, timeChunk, themeToWork}: 
+                           {emptyProp: boolean, setWorkedSquaresLocal: (val: any)=>void, workedSquares: number, timeChunk: number, themeToWork:any}) => {
   
   const router = useRouter()
   
@@ -21,7 +22,7 @@ const FiveMinSquare = ({emptyProp, setWorkedSquaresLocal, workedSquares}: {empty
       console.log(err)
     }
        
-    const myItem = user.workouts.find((item:any) => {
+    const myItem = user.themeToWork.workouts.find((item:any) => {
       return new Date(item.date).getDate() === new Date().getDate()
     })
 
@@ -58,7 +59,7 @@ const FiveMinSquare = ({emptyProp, setWorkedSquaresLocal, workedSquares}: {empty
           'border border-amber-300 rounded-md flex items-center justify-center h-[70px]', {'bg-amber-100': emptyProp !== true}
       )}
            onClick={squareClickHandle}>
-        5 мин
+          {timeChunk} мин
       </div>
   );
 };

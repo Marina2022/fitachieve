@@ -3,10 +3,11 @@
 import FiveMinSquare from "./FiveMinSquare";
 import {useState} from "react";
 
-const SquareBlock = ({plannedTime, squareArray, workedSquares}: {
+const SquareBlock = ({plannedTime, squareArray, workedSquares, timeChunk}: {
     plannedTime: Number,
     squareArray: Number[],
-    workedSquares: number
+    workedSquares: number,
+    timeChunk: number
 }) => {
 
     const [workedSquaresLocal, setWorkedSquaresLocal] = useState(workedSquares)

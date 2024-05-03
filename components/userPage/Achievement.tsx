@@ -4,23 +4,14 @@ import SquareBlock from "@/components/userPage/SquareBlock";
 import connectDB from "@/database";
 import User from "@/models/User";
 
-const Achievement = async ({searchParams}:{searchParams?: any}) => {
-    const theme = searchParams?.theme
+
+const Achievement = async ({themeToWork}:{themeToWork: any}) => {
+    
+    console.log('theme из Achievement = ', themeToWork)
     connectDB()
 
-    let themeToWork
     const user = await User.findById('6634e7d79ec5d549ac393bd6')
 
-    const allThemes = [...user.themes]
-    console.log('allThemes', allThemes[0])
-
-    themeToWork =  allThemes.find((item: any)=> {
-        return item.themeName.toLowerCase() === theme
-    })
-
-    if (!themeToWork) themeToWork = allThemes[0]
-    
-    
     const item = themeToWork.workouts.find((item: any) => {
         return item.date.toDateString() == new Date().toDateString()
     })
@@ -33,10 +24,8 @@ const Achievement = async ({searchParams}:{searchParams?: any}) => {
         workedSquares = 0
     }
     
-
-
-    const plannedTime = 15  // подтянули из базы
-    const minSquareQuantity = 15 / 5
+    const plannedTime = themeToWork.planPerDay  // подтянули из базы
+    const minSquareQuantity = plannedTime / themeToWork.timeChunk
 
     const squareQuantity = minSquareQuantity > (workedSquares + 1) ? minSquareQuantity : workedSquares + 1
 
@@ -51,9 +40,9 @@ const Achievement = async ({searchParams}:{searchParams?: any}) => {
                 Достижения на сегодня - {new Date().toLocaleDateString()}
             </h2>
 
-            <h3 className="font-bold mt-6 text-indigo-700">Тренировки</h3>
+            <h3 className="font-bold mt-6 text-indigo-700">{themeToWork.themeName}</h3>
 
-            <SquareBlock plannedTime={plannedTime} squareArray={squareArray} workedSquares={workedSquares}/>
+            <SquareBlock plannedTime={plannedTime} squareArray={squareArray} workedSquares={workedSquares} />
         </div>
     );
 };
