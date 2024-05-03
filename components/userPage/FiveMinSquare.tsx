@@ -21,20 +21,26 @@ const FiveMinSquare = ({emptyProp, setWorkedSquaresLocal, workedSquares}: {empty
       console.log(err)
     }
        
-
-
     const myItem = user.workouts.find((item:any) => {
       return new Date(item.date).getDate() === new Date().getDate()
     })
 
-    if (emptyProp) {
-      myItem.workedMinutes = myItem.workedMinutes + 5
-      setWorkedSquaresLocal((prev:number) => prev + 1)
+    if (myItem ! == -1) {
+        if (emptyProp) {
+            myItem.workedMinutes = myItem.workedMinutes + 5
+            setWorkedSquaresLocal((prev:number) => prev + 1)
+        } else {
+            myItem.workedMinutes = myItem.workedMinutes - 5
+            setWorkedSquaresLocal((prev:number) => prev - 1)
+        }            
     } else {
-      myItem.workedMinutes = myItem.workedMinutes - 5
-      setWorkedSquaresLocal((prev:number) => prev - 1)
+        // user.workouts.push({date: new Date(), workedMinutes: 5})
+        // setWorkedSquaresLocal((prev:number) => prev - 1)
+        
+        // если не создано еще на эту данных объектов в воркаутах, надо же новый объект добавить.. todo: добавить
     }
-    // c датами какая-то фигня, скажи? аха
+    
+    
 
     try {
       const resp = await fetch('/api/user', {method: 'PUT', body: JSON.stringify({user: user})})

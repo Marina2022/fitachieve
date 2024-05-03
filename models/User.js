@@ -7,13 +7,20 @@ export const UserSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  initialTimePlan: Number,
-  workouts: [
+  themes: [
     {
-      date: Date,
-      workedMinutes: Number
-    }      
+      themeName: String,
+      planPerDay: Number,
+      timeChunk: Number,
+      workouts: [
+        {
+          date: Date,
+          workedMinutes: Number
+        }
+      ]    
+    }
   ]
+  
 })
 
 const User = mongoose.models.User || mongoose.model('User', UserSchema)

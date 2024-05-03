@@ -6,6 +6,7 @@ import SquareBlock from "@/components/userPage/SquareBlock";
 import DayCard from "@/components/userPage/DayCard"
 import PlanRange from "@/components/userPage/PlanRange"
 import Achievement from "@/components/userPage/Achievement"
+import SideBar from "@/components/userPage/SideBar"
 
 // по идее можно че: добавить название Ачивки, запланированное время, можно еще размер блока со временем, может людям 5мин мало
 
@@ -16,19 +17,33 @@ import Achievement from "@/components/userPage/Achievement"
 // ниче сложного так-то
 // можно отд. страницу со всеми достижениями, все дела. 
 
-
-export default async function Home() {
+export default async function Home({searchParams}: { searchParams: any }) {
+    const theme = searchParams.theme
 
     connectDB()
-    const user = await User.findById('6634a5cb9ec5d549ac393bd2')
+
+    let themeToWork
+    const user = await User.findById('6634e7d79ec5d549ac393bd6')
+
+    const allThemes = [...user.themes]
+    console.log('allThemes', allThemes[0])
+
+    themeToWork = allThemes.find((item: any) => {
+        return item.themeName.toLowerCase() === theme
+    })
+
+    if (!themeToWork) themeToWork = allThemes[0]
+
 
     return (
-        <main className="p-24">
+        <main className="pt-24 container mx-auto">
             <div className="flex w-full">
+                <SideBar/>
                 <Achievement/>
-                <aside className="w-1/4 ml-auto space-y-5">
+
+                <aside className="w-1/5 ml-auto space-y-5">
                     {
-                        user.workouts.map((day: any, i: number) => i !== 0 &&
+                        themeToWork.workouts.map((day: any, i: number) => i !== 0 &&
                             <DayCard key={i} day={day}/>)
                     }
                 </aside>

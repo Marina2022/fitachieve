@@ -1,0 +1,39 @@
+{
+  "name": "Marinaaa",
+  "email": "marusiiiia@yandex.ru",
+  "themes": [
+    {
+      "themeName": "Fitness",
+      "planPerDay": 15,
+      "timeChunk": 5,
+      "workouts": [
+        {
+          "date": "2024-05-03T14:00:00+03:00",
+          "workedMinutes": 5
+        }
+      ]
+    },
+    {
+      "themeName": "Арабский",
+      "planPerDay": 15,
+      "timeChunk": 5,
+      "workouts": [
+        {
+          "date": "2024-05-03T14:00:00+03:00",
+          "workedMinutes": 0
+        }
+      ]
+    },
+    {
+      "themeName": "NextJs",
+      "planPerDay": 30,
+      "timeChunk": 15,
+      "workouts": [
+        {
+          "date": "2024-05-03T14:00:00+03:00",
+          "workedMinutes": 0
+        }
+      ]
+    }
+  ]
+}

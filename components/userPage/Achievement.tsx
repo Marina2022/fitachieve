@@ -4,16 +4,35 @@ import SquareBlock from "@/components/userPage/SquareBlock";
 import connectDB from "@/database";
 import User from "@/models/User";
 
-const Achievement = async () => {
-
+const Achievement = async ({searchParams}:{searchParams?: any}) => {
+    const theme = searchParams?.theme
     connectDB()
-    const user = await User.findById('6634a5cb9ec5d549ac393bd2')
 
-    const item = user.workouts.find((item: any) => {
+    let themeToWork
+    const user = await User.findById('6634e7d79ec5d549ac393bd6')
+
+    const allThemes = [...user.themes]
+    console.log('allThemes', allThemes[0])
+
+    themeToWork =  allThemes.find((item: any)=> {
+        return item.themeName.toLowerCase() === theme
+    })
+
+    if (!themeToWork) themeToWork = allThemes[0]
+    
+    
+    const item = themeToWork.workouts.find((item: any) => {
         return item.date.toDateString() == new Date().toDateString()
     })
 
-    const workedSquares = item.workedMinutes / 5
+    let workedSquares
+    
+    if (item !== -1 ){
+        workedSquares = item.workedMinutes / 5    
+    } else {
+        workedSquares = 0
+    }
+    
 
 
     const plannedTime = 15  // подтянули из базы
