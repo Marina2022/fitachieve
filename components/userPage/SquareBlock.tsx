@@ -1,17 +1,27 @@
 'use client'
+
 import FiveMinSquare from "./FiveMinSquare";
+import {useState} from "react";
 
 const SquareBlock = ({plannedTime, squareArray, workedSquares}: {
     plannedTime: Number,
     squareArray: Number[],
-    workedSquares: Number
+    workedSquares: number
 }) => {
 
-    console.log('squareArray = ', squareArray)
+    const [workedSquaresLocal, setWorkedSquaresLocal] = useState(workedSquares)
+    
+    if (workedSquaresLocal === squareArray.length) squareArray.push(1)
+    
     return (
-        <div className="wrapper grid grid-cols-3 grid-rows-1 w-[250px] h-[70px] gap-5 mt-[20px]">
+        <div className="wrapper grid grid-cols-3 grid-rows-auto w-[250px] gap-5 mt-[20px] cursor-pointer ">
             {
-                squareArray.map((item, i) => <FiveMinSquare key={i} emptyProp={i + 1 > Number(workedSquares)}/>)
+                squareArray.map((item, i) => <FiveMinSquare 
+                    key={i} 
+                    emptyProp={i + 1 > Number(workedSquaresLocal)}
+                    setWorkedSquaresLocal={setWorkedSquaresLocal}
+                    workedSquares={workedSquares}
+                />)
             }
 
         </div>
