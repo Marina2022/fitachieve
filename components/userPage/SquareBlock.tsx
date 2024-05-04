@@ -1,30 +1,27 @@
 'use client'
 
-import FiveMinSquare from "./FiveMinSquare";
+import TimeSquare from "./TimeSquare";
 import {useState} from "react";
 
-const SquareBlock = ({plannedTime, squareArray, workedSquares, timeChunk}: {
+const SquareBlock = ({plannedTime, squareArray, workedSquares, timeChunk, themeName}: {
     plannedTime: Number,
     squareArray: Number[],
     workedSquares: number,
-    timeChunk: number
+    timeChunk: number,
+    themeName: string
 }) => {
-
-    const [workedSquaresLocal, setWorkedSquaresLocal] = useState(workedSquares)
-    
-    if (workedSquaresLocal === squareArray.length) squareArray.push(1)
     
     return (
         <div className="wrapper grid grid-cols-3 grid-rows-auto w-[250px] gap-5 mt-[20px] cursor-pointer ">
             {
-                squareArray.map((item, i) => <FiveMinSquare 
+                squareArray.map((item, i) => <TimeSquare 
                     key={i} 
-                    emptyProp={i + 1 > Number(workedSquaresLocal)}
-                    setWorkedSquaresLocal={setWorkedSquaresLocal}
+                    emptyProp={i + 1 > Number(workedSquares)}                    
                     workedSquares={workedSquares}
+                    timeChunk={timeChunk}
+                    themeName={themeName}                    
                 />)
             }
-
         </div>
     );
 };

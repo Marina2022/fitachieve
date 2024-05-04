@@ -1,6 +1,7 @@
 import connectDB from "@/database";
 import User from "@/models/User";
 
+
 // export const dynamic = 'force-dynamic'
 
 export const dynamic = 'force-dynamic'
@@ -8,7 +9,7 @@ export const GET = async () => {
 
   try {
     await connectDB()
-    const user = await User.findById('6634a5cb9ec5d549ac393bd2')
+    const user = await User.findById('6634e7d79ec5d549ac393bd6')
 
     return Response.json(user)
 
@@ -20,19 +21,14 @@ export const GET = async () => {
 }
 
 export const PUT = async (req) => {
-
-  const updatedUser = await req.json()
-
-  const workouts = updatedUser.user.workouts
+  
+  const {user} = await req.json()
+ 
 
   try {
     await connectDB()
-//    let user = await User.findById('6634a5cb9ec5d549ac393bd2')
-
-    await User.findOneAndUpdate({_id: '6634a5cb9ec5d549ac393bd2'}, {workouts: workouts})
-
+    await User.findOneAndUpdate({_id: '6634e7d79ec5d549ac393bd6'}, {themes: user.themes})
     return Response.json({success: 'hello'})
-
 
   } catch (err) {
     console.log(err)
