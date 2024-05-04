@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 
 import {User} from '@/types'
 import {useParams, useRouter} from "next/navigation";
+import {put} from "@/actions";
 
 
 const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
@@ -37,8 +38,8 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
     )
     const sendEditWorkoutRequest = async (user: User) => {
         try {
-            const resp = await fetch('/api/user', {method: 'PUT', body: JSON.stringify({user: user, theme: themeName})})
-            return resp
+            await put(user)            
+            return {ok: true}
         } catch (err) {
             console.log('Ошибка во время поста')
             return {ok: false}
@@ -78,7 +79,6 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
             workouts.push(newItem)
             sendEditWorkoutRequest(user)
         }
-        router.refresh()
     }
 
     return (

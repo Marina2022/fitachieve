@@ -20,18 +20,3 @@ export const GET = async () => {
   }
 }
 
-export const PUT = async (req) => {
-  
-  const {user} = await req.json()
- 
-
-  try {
-    await connectDB()
-    await User.findOneAndUpdate({_id: '6634e7d79ec5d549ac393bd6'}, {themes: user.themes})
-    return Response.json({success: 'hello'})
-
-  } catch (err) {
-    console.log(err)
-    return new Response('Something wrong', {status: 500})
-  }
-}
