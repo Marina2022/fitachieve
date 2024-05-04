@@ -12,7 +12,7 @@ const SideBar = async ({searchParams}: { searchParams?: any }) => {
     
     return (
         
-        <ul className="w-1/5 mr-[20px]">
+        <ul className="w-1/5 mr-[50px]">
             {
                  // allThemes.map((theme, i) =>   <ThemeButton theme={theme} key={i}/>)
                  allThemes.map((theme, i) =>  <ThemeButton themeName={theme.themeName}  key={i} />)
