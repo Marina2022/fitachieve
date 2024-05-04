@@ -8,6 +8,11 @@ import PlanRange from "@/components/userPage/PlanRange"
 import Achievement from "@/components/userPage/Achievement"
 import SideBar from "@/components/userPage/SideBar"
 
+export const generateMetadata = async ({searchParams}: {searchParams: any}) => {    
+    return {
+        title: searchParams?.theme
+    }
+}
 
 export default async function Home({searchParams}: { searchParams: any }) {
     const theme = searchParams?.theme
