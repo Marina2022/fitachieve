@@ -12,6 +12,7 @@ export const UserSchema = new mongoose.Schema({
       themeName: String,
       planPerDay: Number,
       timeChunk: Number,
+      notes: String,
       workouts: [
         {
           date: Date,

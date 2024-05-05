@@ -7,8 +7,9 @@ import DayCard from "@/components/userPage/DayCard"
 import PlanRange from "@/components/userPage/PlanRange"
 import Achievement from "@/components/userPage/Achievement"
 import SideBar from "@/components/userPage/SideBar"
+import Notes from "@/components/userPage/Notes";
 
-export const generateMetadata = async ({searchParams}: {searchParams: any}) => {    
+export const generateMetadata = async ({searchParams}: { searchParams: any }) => {
     return {
         title: searchParams?.theme
     }
@@ -24,21 +25,27 @@ export default async function Home({searchParams}: { searchParams: any }) {
     const allThemes = [...user.themes]
     if (!allThemes) return
 
-    if  (!theme) {
+    if (!theme) {
         themeToWork = allThemes[0]
     } else {
         themeToWork = allThemes.find((item: any) => {
             return item.themeName.toLowerCase() === theme.toLowerCase()
-        })    
-    }    
+        })
+    }
 
     if (!themeToWork) themeToWork = allThemes[0]
-    
+
     return (
         <main className="pt-24 container mx-auto">
             <div className="flex w-full">
                 <SideBar/>
-                <Achievement themeToWork={themeToWork} />
+                <div>
+                    <Achievement themeToWork={themeToWork}/>
+                    
+                    <Notes key={searchParams.theme} />
+                    {/*<Notes notesUser={user}  />*/}
+
+                </div>
 
                 <aside className="w-1/5 ml-auto space-y-5">
                     {

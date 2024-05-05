@@ -19,7 +19,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
 
     const [user, setUser] = useState({} as User)
 
-    const params = useParams()
+    
     useEffect(() => {
             const getUser = async () => {
                 let user: User = {}
@@ -34,7 +34,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
                 }
             }
             getUser()
-        }, [params]
+        }, []
     )
     const sendEditWorkoutRequest = async (user: User) => {
         try {
