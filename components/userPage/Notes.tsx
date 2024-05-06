@@ -30,7 +30,7 @@ const Notes = () => {
 
     return (
         <>            
-        <textarea spellCheck="false" className="mt-5 h-[150px] w-full p-4 border mb-5" value={notes}
+        <textarea spellCheck="false" className="mt-5 h-[150px] w-full p-4 border mb-5 max-md:h-[120px]" value={notes}
                   onChange={(e) => setNotes(e.target.value)}>            
             {
                 notes
