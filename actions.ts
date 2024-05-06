@@ -14,18 +14,24 @@ export async function put(user: UserType) {
 export async function getNotes(theme: string) {
     const user = await User.findById('6634e7d79ec5d549ac393bd6')
 
-    const myTheme = user.themes.find((item: any) => {
-        return item.themeName.toLowerCase() === theme.toLowerCase()
+    let myTheme = user.themes.find((item: any) => {
+        return item.themeName.toLowerCase() === theme?.toLowerCase()
     })
+
+    if (!myTheme) myTheme = user.themes[0]
+    
     return myTheme?.notes
 }
 
 export async function setMyNotes(theme: string, text: string) {
     const user = await User.findById('6634e7d79ec5d549ac393bd6')
 
-    const myTheme = user.themes.find((item: any) => {
-        return item.themeName.toLowerCase() === theme.toLowerCase()
+    let myTheme = user.themes.find((item: any) => {
+        return item.themeName.toLowerCase() === theme?.toLowerCase()
     })
+    
+    if (!myTheme) myTheme = user.themes[0]
+        
     myTheme.notes = text
     await put(user)    
 }

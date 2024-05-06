@@ -27,7 +27,7 @@ const Achievement = async ({themeToWork}:{themeToWork: any}) => {
             {/*<PlanRange workouts={user.workouts}/>*/}
             <h1 className="font-bold text-2xl text-red-500 mb-[20px]">{user.name}</h1>
             <h2 className="font-bold">
-                Достижения на сегодня - {new Date().toLocaleDateString()}
+                Достижения на сегодня - {new Date().toLocaleDateString('ru')}
             </h2>
 
             <h3 className="font-bold mt-6 text-3xl">{themeToWork.themeName}:</h3>
