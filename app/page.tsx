@@ -38,7 +38,7 @@ export default async function Home({searchParams}: { searchParams: any }) {
     const myWorkouts = [...themeToWork.workouts].reverse()
     
     return (
-        <main className="pt-24 container mx-auto  max-md:px-[20px] max-md:pt-10">
+        <main className="pt-24 container mx-auto  max-md:px-[20px] max-md:py-10">
             <div className="flex w-full max-md:justify-center">
                 <SideBar/>
                 <div>

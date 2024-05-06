@@ -83,7 +83,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
 
     return (
         <div className={clsx(
-            'active:shadow-md border border-amber-300 rounded-md flex items-center justify-center h-[70px]', {'bg-amber-100': emptyProp !== true}
+            'active:shadow-md border border-amber-300 rounded-md flex items-center justify-center h-[70px] select-none', {'bg-amber-100': emptyProp !== true}
         )}
              onClick={squareClickHandle}>
             {timeChunk} мин
