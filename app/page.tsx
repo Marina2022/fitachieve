@@ -38,14 +38,13 @@ export default async function Home({searchParams}: { searchParams: any }) {
     const myWorkouts = [...themeToWork.workouts].reverse()
     
     return (
-        <main className="pt-24 container mx-auto  max-md:px-[20px] max-md:py-10">
+        <main className="pt-24 container mx-auto  max-md:px-[20px] max-md:py-6">
             <div className="flex w-full max-md:justify-center">
                 <SideBar/>
                 <div>
                     <Achievement themeToWork={themeToWork}/>
                     
-                    <Notes key={searchParams.theme} />
-                    {/*<Notes notesUser={user}  />*/}
+                    <Notes key={searchParams.theme} />                    
 
                 </div>
 
