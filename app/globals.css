@@ -4,11 +4,12 @@
 
 
 body {
-  
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+.asideClass {
+    height: calc(100vh - 96px);
+    overflow: auto;
+    padding-bottom: 20px;
 }

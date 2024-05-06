@@ -23,9 +23,10 @@ const Achievement = async ({themeToWork}:{themeToWork: any}) => {
     const squareArray = Array.from({length: squareQuantity}, (i: Number) => 1)
     
     return (
-        <div>
-            {/*<PlanRange workouts={user.workouts}/>*/}
+        <div>            
             <h1 className="font-bold text-2xl text-red-500 mb-[20px]">{user.name}</h1>
+
+            <PlanRange minSquareQuantity={minSquareQuantity} workedSquares={workedSquares} />
             <h2 className="font-bold">
                 Достижения на сегодня - {new Date().toLocaleDateString('ru')}
             </h2>

@@ -35,9 +35,11 @@ export default async function Home({searchParams}: { searchParams: any }) {
 
     if (!themeToWork) themeToWork = allThemes[0]
 
+    const myWorkouts = [...themeToWork.workouts].reverse()
+    
     return (
-        <main className="pt-24 container mx-auto">
-            <div className="flex w-full">
+        <main className="pt-24 container mx-auto  max-md:px-[20px] max-md:pt-10">
+            <div className="flex w-full max-md:justify-center">
                 <SideBar/>
                 <div>
                     <Achievement themeToWork={themeToWork}/>
@@ -47,10 +49,10 @@ export default async function Home({searchParams}: { searchParams: any }) {
 
                 </div>
 
-                <aside className="w-1/5 ml-auto space-y-5">
-                    {
-                        themeToWork.workouts.map((day: any, i: number) => new Date(day.date).toDateString() !== new Date().toDateString() &&
-                            <DayCard key={i} day={day}/>)
+                <aside className="w-1/4 ml-auto space-y-5 asideClass max-md:hidden ">
+                    {                        
+                        myWorkouts.map((day: any, i: number) => 
+                            <DayCard key={i} day={day} timeChunk={themeToWork.timeChunk} planPerDay={themeToWork.planPerDay} />)
                     }
                 </aside>
             </div>

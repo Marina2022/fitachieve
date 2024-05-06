@@ -37,7 +37,7 @@ const Notes = () => {
             }
         </textarea>
 
-            <button onClick={submitHandler} className="p-3 border border-amber-300 rounded-md bg-amber-50">Отправить
+            <button onClick={submitHandler} className="active:shadow-md p-3 border border-amber-300 rounded-md bg-amber-50">Отправить
             </button>
         </>
     );
