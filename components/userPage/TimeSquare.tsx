@@ -48,6 +48,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
 
     const router = useRouter()
     const squareClickHandle = async () => {
+        console.log('вижу клик')
                        
         if (!user.themes) {
             console.log('Еще не подгрузился юзер')
@@ -57,7 +58,11 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
         const myTheme = user.themes.find(theme => theme.themeName === themeName)
         const workouts = myTheme?.workouts
 
-        if (!workouts) return
+        if (!workouts) {
+            console.log('Теперь не подгрузились workouts')
+            return
+        }
+        
 
         const myItem = workouts.find((item: any) => {
             return new Date(item.date).getDate() === new Date().getDate()
