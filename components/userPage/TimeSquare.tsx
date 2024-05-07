@@ -36,7 +36,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
             getUser()
         }, []
     )
-    const sendEditWorkoutRequest = async (user: User) => {
+    const sendEditWorkoutRequest = async (user: User) => {        
         try {
             await put(user)            
             return {ok: true}
@@ -48,7 +48,12 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
 
     const router = useRouter()
     const squareClickHandle = async () => {
-        if (!user.themes) return
+                       
+        if (!user.themes) {
+            console.log('Еще не подгрузился юзер')
+            return
+        }            
+          
         const myTheme = user.themes.find(theme => theme.themeName === themeName)
         const workouts = myTheme?.workouts
 
