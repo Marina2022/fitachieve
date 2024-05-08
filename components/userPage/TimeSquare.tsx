@@ -92,7 +92,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
     }
 
     return (
-        <div className={clsx(
+        user && <div className={clsx(
             'active:shadow-md border border-amber-300 rounded-md flex items-center justify-center h-[70px] select-none', {'bg-amber-100': emptyProp !== true}
         )}
              onClick={squareClickHandle}>
