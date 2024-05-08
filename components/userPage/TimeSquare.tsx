@@ -8,6 +8,7 @@ import {useParams, useRouter} from "next/navigation";
 import {put} from "@/actions";
 
 
+
 const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
                         {
                             emptyProp: boolean,
@@ -52,6 +53,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
                        
         if (!user.themes) {
             console.log('Еще не подгрузился юзер')
+            console.log('user=', user)
             return
         }            
           
