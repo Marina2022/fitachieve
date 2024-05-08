@@ -4,9 +4,6 @@ import {User} from "@/types";
 import {useParams, useSearchParams} from "next/navigation";
 import {useEffect, useState} from "react";
 import {getNotes, setMyNotes} from "@/actions";
-import {Simulate} from "react-dom/test-utils";
-import submit = Simulate.submit;
-
 const Notes = () => {
 
     const searchParams = useSearchParams()
@@ -31,11 +28,8 @@ const Notes = () => {
     return (
         <>            
         <textarea spellCheck="false" className="mt-5 h-[150px] w-full p-4 border mb-5 max-md:h-[120px]" value={notes}
-                  onChange={(e) => setNotes(e.target.value)}>            
-            {
-                notes
-            }
-        </textarea>
+                  onChange={(e) => setNotes(e.target.value)} />            
+     
 
             <button onClick={submitHandler} className="active:shadow-md p-3 border border-amber-300 rounded-md bg-amber-50">Отправить
             </button>

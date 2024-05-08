@@ -25,7 +25,7 @@ export default async function Home({searchParams}: { searchParams: any }) {
     const allThemes = [...user.themes]
     if (!allThemes) return
 
-    if (!theme) {
+    if (!theme && allThemes) {
         themeToWork = allThemes[0]
     } else {
         themeToWork = allThemes.find((item: any) => {
@@ -33,7 +33,7 @@ export default async function Home({searchParams}: { searchParams: any }) {
         })
     }
 
-    if (!themeToWork) themeToWork = allThemes[0]
+    if (!themeToWork && allThemes) themeToWork = allThemes[0]
 
     const myWorkouts = [...themeToWork.workouts].reverse()
     

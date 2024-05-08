@@ -7,36 +7,35 @@ import {User} from '@/types'
 import {useParams, useRouter} from "next/navigation";
 import {put} from "@/actions";
 
-
-
-const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
+const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
                         {
                             emptyProp: boolean,
                             workedSquares: number,
                             timeChunk: number,
                             themeName: string,
+                            user: User
 
                         }) => {
 
-    const [user, setUser] = useState({} as User)
+    // const [user, setUser] = useState({} as User)
 
     
-    useEffect(() => {
-            const getUser = async () => {
-                let user: User = {}
-                try {
-                    const resp = await fetch('/api/user')
-                    if (!resp.ok) throw new Error('user not fetched')
-                    user = await resp.json()
-                    setUser(user)
-                } catch (err) {
-                    console.log(err)
-                    throw new Error('fuck')
-                }
-            }
-            getUser()
-        }, []
-    )
+    // useEffect(() => {
+    //         const getUser = async () => {
+    //             let user: User = {}
+    //             try {
+    //                 const resp = await fetch('/api/user')
+    //                 if (!resp.ok) throw new Error('user not fetched')
+    //                 user = await resp.json()
+    //                 setUser(user)
+    //             } catch (err) {
+    //                 console.log(err)
+    //                 throw new Error('fuck')
+    //             }
+    //         }
+    //         getUser()
+    //     }, []
+    // )
     const sendEditWorkoutRequest = async (user: User) => {        
         try {
             await put(user)            
@@ -92,9 +91,9 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName}:
             sendEditWorkoutRequest(user)
         }
     }
-
+    
     return (
-        user && <div className={clsx(
+        user.themes && <div className={clsx(
             'active:shadow-md border border-amber-300 rounded-md flex items-center justify-center h-[70px] select-none', {'bg-amber-100': emptyProp !== true}
         )}
              onClick={squareClickHandle}>
