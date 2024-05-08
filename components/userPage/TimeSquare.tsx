@@ -17,25 +17,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
 
                         }) => {
 
-    // const [user, setUser] = useState({} as User)
-
     
-    // useEffect(() => {
-    //         const getUser = async () => {
-    //             let user: User = {}
-    //             try {
-    //                 const resp = await fetch('/api/user')
-    //                 if (!resp.ok) throw new Error('user not fetched')
-    //                 user = await resp.json()
-    //                 setUser(user)
-    //             } catch (err) {
-    //                 console.log(err)
-    //                 throw new Error('fuck')
-    //             }
-    //         }
-    //         getUser()
-    //     }, []
-    // )
     const sendEditWorkoutRequest = async (user: User) => {        
         try {
             await put(user)            

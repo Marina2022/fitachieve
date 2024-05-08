@@ -31,10 +31,10 @@ const SquareBlock = ({plannedTime, squareArray, workedSquares, timeChunk, themeN
         }, []
     )
     
-    if(!user.themes) return <div className='w-[250px] gap-5 mt-[20px]'>Loading...</div>
+    if(!user.themes) return <div className='w-[250px] gap-5 mt-[20px] h-[70px]'>Loading...</div>
     
     return (
-        <div className="wrapper grid grid-cols-3  grid-rows-auto w-[250px] gap-5 mt-[20px] cursor-pointer ">
+        <div className="wrapper grid grid-cols-3 grid-rows-auto w-[250px]  gap-5 mt-[20px] cursor-pointer ">
             {
                 squareArray.map((item, i) => <TimeSquare 
                     key={i} 
