@@ -1,9 +1,7 @@
 import clsx from "clsx";
 
 const DayCard = ({day, timeChunk, planPerDay}: { day: any, planPerDay: number, timeChunk: number }) => {
-
-    console.log('day', day)
-
+    
     const currentDate = new Date(day.date)
     const options = {year: 'numeric', month: 'long', day: '2-digit'}; // Опции для форматирования
     const formattedDate: string = currentDate.toLocaleDateString(undefined, options as Intl.DateTimeFormatOptions);
