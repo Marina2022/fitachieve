@@ -8,8 +8,9 @@ const connectDB = async () => {
     return
   }
   mongoose.set('strictQuery', true)
+  
   try {
-    await mongoose.connect(process.env.MONGODB_URI)
+    await mongoose.connect(process.env.MONGODB_URI, {server: {auto_reconnect: true}})
     console.log('database successfully connected')
     connected = true
   } catch (err) {
