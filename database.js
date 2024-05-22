@@ -8,9 +8,15 @@ const connectDB = async () => {
     return
   }
   mongoose.set('strictQuery', true)
+
+  const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // Other options can be added here if needed
+  };
   
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {server: {auto_reconnect: true}})
+    await mongoose.connect(process.env.MONGODB_URI, options)
     console.log('database successfully connected')
     connected = true
   } catch (err) {
