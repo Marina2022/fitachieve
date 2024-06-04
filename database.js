@@ -11,7 +11,7 @@ const connectDB = async () => {
 
   const options = {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true, // автоматический реконнект вот тут сидит
     // Other options can be added here if needed
   };
   

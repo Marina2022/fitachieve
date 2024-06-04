@@ -5,7 +5,7 @@ import User from "@/models/User";
 import {Theme, User as UserType} from '@/types'
 import {revalidatePath} from 'next/cache'
 
-export async function put(user: UserType) {
+export async function updateUser(user: UserType) {
     await connectDB()
     await User.findOneAndUpdate({_id: '6634e7d79ec5d549ac393bd6'}, {themes: user.themes})
     revalidatePath('/')
@@ -33,5 +33,5 @@ export async function setMyNotes(theme: string, text: string) {
     if (!myTheme) myTheme = user.themes[0]
         
     myTheme.notes = text
-    await put(user)    
+    await updateUser(user)    
 }

@@ -1,11 +1,11 @@
 'use client'
 
 import clsx from 'clsx'
-import {useEffect, useState} from "react";
 
 import {User} from '@/types'
-import {useParams, useRouter} from "next/navigation";
-import {put} from "@/actions";
+import {useRouter} from "next/navigation";
+import {updateUser} from "@/actions";
+
 
 const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
                         {
@@ -20,7 +20,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
     
     const sendEditWorkoutRequest = async (user: User) => {        
         try {
-            await put(user)            
+            await updateUser(user)            
             return {ok: true}
         } catch (err) {
             console.log('Ошибка во время поста')
@@ -45,14 +45,14 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
             console.log('Теперь не подгрузились workouts')
             return
         }
-        
 
         const myItem = workouts.find((item: any) => {
-            return new Date(item.date).getDate() === new Date().getDate()
+            return new Date(item.date).getDate() === new Date().getDate() && new Date(item.date).getFullYear() === new Date().getFullYear() && new Date(item.date).getMonth() === new Date().getMonth()
         })
 
         // если воркауты сегодня были:
         if (myItem) {
+            console.log(myItem)
             // если кликнули по пустому квадрату
             if (emptyProp) {
                 // новое значение объекта workout (элемента массива workouts - карточки воркаута)
@@ -60,6 +60,9 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
                 const resp = await sendEditWorkoutRequest(user)
 
             } else {
+
+                
+                
                 myItem.workedMinutes = (workedSquares - 1) * timeChunk
                 const resp = await sendEditWorkoutRequest(user)
             }
