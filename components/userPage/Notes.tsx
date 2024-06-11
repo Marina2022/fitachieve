@@ -9,7 +9,7 @@ const Notes = () => {
     const intervalRef = useRef<any>(null);
     
     useEffect(() => {
-        intervalRef.current = setInterval(()=>window.location.reload(), 600000)
+        intervalRef.current = setInterval(()=>window.location.reload(), 60000)
         return ()=>clearInterval(intervalRef.current)
     }, []);
 
