@@ -6,6 +6,11 @@ import {useEffect, useState} from "react";
 import {getNotes, setMyNotes} from "@/actions";
 const Notes = () => {
 
+    useEffect(() => {
+        const id = setInterval(()=>window.location.reload(), 600000)
+        return ()=>clearInterval(id)
+    }, []);
+
     const searchParams = useSearchParams()
     const theme = searchParams.get('theme')
     const [notes, setNotes] = useState('')

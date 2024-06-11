@@ -33,8 +33,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
         console.log('вижу клик')
                        
         if (!user.themes) {
-            console.log('Еще не подгрузился юзер')
-            console.log('user=', user)
+            console.log('Еще не подгрузился юзер')            
             return
         }            
           
@@ -51,8 +50,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
         })
 
         // если воркауты сегодня были:
-        if (myItem) {
-            console.log(myItem)
+        if (myItem) {            
             // если кликнули по пустому квадрату
             if (emptyProp) {
                 // новое значение объекта workout (элемента массива workouts - карточки воркаута)
