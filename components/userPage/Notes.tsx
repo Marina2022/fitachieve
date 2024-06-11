@@ -2,13 +2,15 @@
 
 import {User} from "@/types";
 import {useParams, useSearchParams} from "next/navigation";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getNotes, setMyNotes} from "@/actions";
 const Notes = () => {
 
+    const intervalRef = useRef<any>(null);
+    
     useEffect(() => {
-        const id = setInterval(()=>window.location.reload(), 600000)
-        return ()=>clearInterval(id)
+        intervalRef.current = setInterval(()=>window.location.reload(), 600000)
+        return ()=>clearInterval(intervalRef.current)
     }, []);
 
     const searchParams = useSearchParams()
