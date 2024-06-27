@@ -49,6 +49,9 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
             return new Date(item.date).getDate() === new Date().getDate() && new Date(item.date).getFullYear() === new Date().getFullYear() && new Date(item.date).getMonth() === new Date().getMonth()
         })
 
+        console.log('на всякий случай вот тебе myItem = ', myItem)
+
+        
         // если воркауты сегодня были:
         if (myItem) {            
             // если кликнули по пустому квадрату
@@ -56,6 +59,8 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
                 // новое значение объекта workout (элемента массива workouts - карточки воркаута)
                 myItem.workedMinutes = (workedSquares + 1) * timeChunk
                 const resp = await sendEditWorkoutRequest(user)
+
+                console.log('воркауты были, updated user = ', user)
 
             } else {
                 
@@ -69,6 +74,7 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
             }
             workouts.push(newItem)
             sendEditWorkoutRequest(user)
+            console.log('воркаутов не было , updated user = ', user)
         }
     }
     
