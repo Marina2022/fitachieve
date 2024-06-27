@@ -58,14 +58,11 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
                 const resp = await sendEditWorkoutRequest(user)
 
             } else {
-
-                
                 
                 myItem.workedMinutes = (workedSquares - 1) * timeChunk
                 const resp = await sendEditWorkoutRequest(user)
             }
         } else {
-
             const newItem = {
                 date: new Date(),
                 workedMinutes: timeChunk
