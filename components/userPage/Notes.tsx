@@ -29,7 +29,7 @@ const Notes = () => {
         }
         getMyNotes()
 
-    }, [])
+    }, [theme])
 
 
     return (

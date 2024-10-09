@@ -46,10 +46,14 @@ const TimeSquare = ({emptyProp, workedSquares, timeChunk, themeName, user}:
         }
 
         const myItem = workouts.find((item: any) => {
+            if (new Date(item.date).getDate() === new Date().getDate()) console.log(item.date)
             return new Date(item.date).getDate() === new Date().getDate() && new Date(item.date).getFullYear() === new Date().getFullYear() && new Date(item.date).getMonth() === new Date().getMonth()
         })
 
         console.log('на всякий случай вот тебе myItem = ', myItem)
+        console.log('А вот сегодняшняя дата: ',  new Date().getDate())
+        
+        // "2024-06-26T21:27:48.723Z" = 20:08 27.06 - Вот как-то таак. 
 
         
         // если воркауты сегодня были:
